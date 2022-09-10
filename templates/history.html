@@ -1,0 +1,37 @@
+
+
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <form action="/history" method="post">
+        <table class="table">
+        <tr>
+            <th>Symbol</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total_Sum</th>
+            <th>New_Cash</th>
+            <th>Date</th>
+        </tr> <!--ряд с ячейками заголовков-->
+        {% for one in history_dict %}
+        <tr>
+            <td>{{ one['symbol']|upper }}</td>
+            <td>{{ one['quantity'] }}</td>
+            <td>{{ one['price'] }}</td>
+            <td>{{one['total_sum'] }}</td>
+            <td>{{one['new_cash'] }}</td>
+            <td>{{one['date'] }}</td>
+        </tr> <!--ряд с ячейками тела таблицы-->
+        {% endfor %}
+
+        </table>
+
+    </form>
+
+
+{% endblock %}

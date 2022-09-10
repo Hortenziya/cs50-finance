@@ -1,0 +1,50 @@
+
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <form action="/index" method="post">
+        <table class="table">
+        <tr>
+            <th>Symbol</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Sum</th>
+        </tr> <!--ряд с ячейками заголовков-->
+        {% for one in session_list %}
+        <tr>
+            <td>{{ one['symbol']|upper }}</td>
+            <td>{{ one['quantity'] }}</td>
+            <td>{{ one['price'] }}</td>
+            <td>{{one['sum']|round(2) }}</td>
+        </tr> <!--ряд с ячейками тела таблицы-->
+        {% endfor %}
+        <tr>
+            <td><b> Total </b></td>
+            <td> </td>
+            <td> </td>
+            <td>{{total|round(2)}}</td>
+        </tr>
+        <tr>
+            <td><b> Cash </b></td>
+            <td> </td>
+            <td> </td>
+            <td>{{cash|round(2)}}</td>
+        </tr>
+        <tr>
+            <td><b> Balance </b></td>
+            <td> </td>
+            <td> </td>
+            <td>{{balance|round(2)}}</td>
+        </tr>
+        </table>
+
+    </form>
+
+
+{% endblock %}
